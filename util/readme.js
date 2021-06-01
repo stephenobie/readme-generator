@@ -36,6 +36,7 @@ function readme(answers) {
   ## Screenshot
 
   ![screenshot](./${answers.image})
+  
   ## License
 
   ![badge](https://img.shields.io/badge/license-${answers.license}-brightgreen)<br>
