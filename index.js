@@ -2,7 +2,7 @@
 const inquirer = require('inquirer');
 const fs = require("fs");
 const util = require("util");
-const readme = require("./utils/readme");
+const readme = require("./util/readme");
 const writeFile = util.promisify(fs.writeFile);
 
 function promptUser() {
@@ -106,7 +106,7 @@ async function init() {
     try {
         const answers = await promptUser();
         const useAnswers = readme(answers);
-        await writeFile("./util/README.md" , useAnswers);
+        await writeFile("./util/READme.md" , useAnswers);
         console.log("Successfully created readme!");
     }catch (err) {
         console.log(err);
