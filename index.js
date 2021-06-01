@@ -1,9 +1,11 @@
-// TODO: Include packages needed for this application
+
 const inquirer = require('inquirer');
 const fs = require("fs");
-const util = require("util")
-// TODO: Create an array of questions for user input
-const promptUser = () => {
+const util = require("util");
+const readme = require("./utils/readme");
+const writeFile = util.promisify(fs.writeFile);
+
+function promptUser() {
     return inquirer.prompt([
       {
         type: 'input',
@@ -100,11 +102,16 @@ const promptUser = () => {
     ]);
   };;
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+async function init() {
+    try {
+        const answers = await promptUser();
+        const useAnswers = readme(answers);
+        await writeFile("./util/README.md" , useAnswers);
+        console.log("Successfully created readme!");
+    }catch (err) {
+        console.log(err);
+    }
+}
 
-// TODO: Create a function to initialize app
-function init() {}
 
-// Function call to initialize app
 init();
